@@ -349,23 +349,6 @@ class Analysis:
 
 
 
-    def determine_class(self, distances, k):
-        """ Determine the k-nearest neighbours to a given point """
-
-          # To do:
-        # 1) Write segment that determines closest distance
-        # 2) Write segment that determines closest average distance
-
-
-
-    def tie_breaker(self, distances):
-        """ Determine class in the event of tie in majority vote """
-
-        # To do:
-        # 1) Write segment that determines closest distance
-        # 2) Write segment that determines closest average distance
-
-
     def regression_coefficients(self, mode='Matrices'):
         """ Calculate the coefficients for linear regression problems """
 
@@ -706,25 +689,25 @@ def main():
     dataframe = p.clean(p.ingest(), replacement_dictionary)
 
     # 2) Normalize the data
-    # for i in normalization_dictionary:
-    #     dataframe[i] = p.scale(dataframe[i], mode='standardize')
+    for i in normalization_dictionary:
+        dataframe[i] = p.scale(dataframe[i], mode='standardize')
 
     # 3) Determine the coefficients using matrices
     a = Analysis(dataframe)
     coefficients = a.regression_coefficients(mode='Matrices')
     
     # 3) Determine the coefficients using gradient descent
-    # coefficients = a.gradient_descent(0.0001, 100000)
-    # print(a.cost_function(coefficients, mode='Square loss'))
+    coefficients = a.gradient_descent(0.0001, 100000)
+    print(a.cost_function(coefficients, mode='Square loss'))
 
     # 4) Calculate various error metrics
     perform = Performance(dataframe, 1000)
     rmse = perform.rmse(coefficients)
     r2   = perform.r2(coefficients)
   
-    # # 5) Plot the 2D results
-    # p = Plotting(dataframe)
-    # p.regression(coefficients, rmse, r2)
+    # 5) Plot the 2D results
+    p = Plotting(dataframe)
+    p.regression(coefficients, rmse, r2)
 
     # # 5) Plot the 3D results
     # from mpl_toolkits.mplot3d import Axes3D
