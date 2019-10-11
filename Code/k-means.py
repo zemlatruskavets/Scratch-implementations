@@ -95,8 +95,7 @@ import matplotlib.pyplot as plt
 
 
 # This is the name of the CSV file containing the data
-dataset_name = 'Bit9.csv'
-# dataset_name = 'cricket.csv'
+dataset_name = 'cricket.csv'
 
 
 # This dictionary defines the changes to be made to the initial dataframe
@@ -106,16 +105,14 @@ replacement_dictionary = {\
 
 
 # This contains the columns names of the features to be included in the model
-relevant = ['Count', 'Unique count of name', 'Unique count of process']
-# relevant = ['batting', 'bowling']
+relevant = ['batting', 'bowling']
 
 
 
 # This dictionary lists the normalization desired for each column
 normalization_dictionary = {\
-                              'Count':                   'standardize',\
-                              'Unique count of name':    'standardize',\
-                              'Unique count of process': 'standardize'\
+                              'Batting': 'standardize',\
+                              'Bowling': 'standardize'\
                            }
 
 
@@ -328,11 +325,11 @@ class Analysis:
                     random_point[j] += np.random.normal(loc=data[k].mean(), scale=data[k].std())
             
             # This initializes centroids based on the k++ algorithm
-            # if mode == 'k++':
-            #     if i == 0:
-            #         random_point = np.zeros(len(relevant))
-            #         for j, k in enumerate(relevant):
-            #             random_point[j] += np.random.normal(loc=dataframe[k].mean(), scale=dataframe[k].std())
+            elif mode == 'k++':
+                if i == 0:
+                    random_point = np.zeros(len(relevant))
+                    for j, k in enumerate(relevant):
+                        random_point[j] += np.random.normal(loc=dataframe[k].mean(), scale=dataframe[k].std())
             
 
             points_list.append(random_point)
@@ -472,14 +469,14 @@ class Performance:
         """ Compare against scikit-learn """
 
         # Import the libraries
-        from sklearn.cluster import KMeans
+        from sklearn.cluster       import KMeans
         from sklearn.preprocessing import MinMaxScaler
 
         # Split the features and labels
         data = data[relevant]
 
         # Scale the data
-        scaler = MinMaxScaler()
+        scaler      = MinMaxScaler()
         data_scaled = scaler.fit_transform(data)
 
         # Fit the model
@@ -527,7 +524,7 @@ def main():
     # Plot 3 dimensional data
     from mpl_toolkits.mplot3d import Axes3D
     fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
+    ax  = fig.add_subplot(111, projection='3d')
     ax.scatter(dataframe[relevant[0]], dataframe[relevant[1]], dataframe[relevant[2]])
     plt.show()
 
