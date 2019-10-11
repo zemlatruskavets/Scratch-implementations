@@ -34,11 +34,11 @@ These are the steps that go into the k-nearest neighbours algorithm:
 
     1) Normalize the data.
     2) Split the dataset into training and test sets.
-    3) Calculate the distances between all pairs of points in the test 
-       and training sets.
+    3) Place a test point at a random point in the phase space.
     4) Determine the k closest points for each test point.
-    5) Perform a majority vote for the closest points for each point in 
-       the test set, performing a tie break, if necessary.
+    5) To determine the class to which the test point belongs, determine 
+       the majority class of the k nearest neighbours, performing a tie 
+       break, if necessary.
     6) Calculate the accuracy of the algorithm by comparing the predicted
        classifications with the true classifications.
     7) Plot the data.
