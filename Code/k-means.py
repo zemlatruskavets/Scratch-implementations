@@ -351,15 +351,6 @@ class Analysis:
 
 
 
-    def determine_class(self, distances, k):
-        """ Determine the k-nearest neighbours to a given point """
-
-          # To do:
-        # 1) Write segment that determines closest distance
-        # 2) Write segment that determines closest average distance
-
-
-
     def tie_breaker(self, distances):
         """ Determine class in the event of tie in majority vote """
 
@@ -590,72 +581,12 @@ def main():
 
 
 
-    # print(dataframe['Prediction'])
-    # pp = Plotting(dataframe)
-    # pp.scatter_plot()
-
-    # pp = Performance(3)
-    # pp.scikitlearn(dataframe, 3)
-
-
 if __name__ == "__main__":
     main()
 
 
 
 
-
-
-
-
-
-
-# Unused
-
-# relevant = ['batting', 'bowling']
-# relevant = ['Alcohol','Malic acid','Ash','Alcalinity of ash','Magnesium','Total phenols','Flavanoids','Nonflavanoid phenols','Proanthocyanins','Color intensity','Hue','OD280/OD315 of diluted wines','Proline']
-
-
-# replacement_dictionary = {\
-#                           '?': np.nan,\
-#                           'yes': 4,\
-#                           'no': 2,\
-#                           'notpresent': 4,\
-#                           'present': 2,\
-#                           'abnormal': 4,\
-#                           'normal': 2,\
-#                           'poor': 4,\
-#                           'good': 2\
-#                           }
-
-
-
-# normalization_dictionary = {\
-#                               'age':   'standardize',\
-#                               'bp':    'standardize',\
-#                               'sg':    'standardize',\
-#                               'al':    'standardize',\
-#                               'su':    'standardize',\
-#                               'rbc':   'standardize',\
-#                               'pc':    'standardize',\
-#                               'pcc':   'standardize',\
-#                               'ba':    'standardize',\
-#                               'bgr':   'standardize',\
-#                               'bu':    'standardize',\
-#                               'sc':    'standardize',\
-#                               'sod':   'standardize',\
-#                               'pot':   'standardize',\
-#                               'hemo':  'standardize',\
-#                               'pcv':   'standardize',\
-#                               'wbcc':  'standardize',\
-#                               'rbcc':  'standardize',\
-#                               'htn':   'standardize',\
-#                               'dm':    'standardize',\
-#                               'cad':   'standardize',\
-#                               'appet': 'standardize',\
-#                               'pe':    'standardize',\
-#                               'ane':   'standardize'\
-#                            }
 
 
 

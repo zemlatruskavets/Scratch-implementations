@@ -38,7 +38,7 @@ These are the steps that go into the k-nearest neighbours algorithm:
        and training sets.
     4) Determine the k closest points for each test point.
     5) Perform a majority vote for the closest points for each point in 
-       the test set, performing a tie break, if neccessary.
+       the test set, performing a tie break, if necessary.
     6) Calculate the accuracy of the algorithm by comparing the predicted
        classifications with the true classifications.
     7) Plot the data.
@@ -93,8 +93,7 @@ import matplotlib.pyplot as plt
 
 
 # This is the name of the CSV file containing the data
-# dataset_name = 'kidney_disease.csv'
-dataset_name = 'iris.csv'
+dataset_name = 'kidney_disease.csv'
 
 
 # This dictionary defines the changes to be made to the initial dataframe
@@ -112,9 +111,7 @@ replacement_dictionary = {\
 
 
 # This contains the columns names of the features to be included in the model
-# relevant = ['age','bp','sg','al','su','rbc','pc','pcc','ba','bgr','bu','sc','sod','pot','hemo','pcv','wbcc','rbcc','htn','dm','cad','appet','pe','ane']
-relevant = ['sepal_length','sepal_width','petal_length','petal_width']
-# relevant = ['age', 'workclass', 'fnlwgt', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'capital-gain', 'capital-loss', 'hours-per-week', 'native-country']
+relevant = ['age','bp','sg','al','su','rbc','pc','pcc','ba','bgr','bu','sc','sod','pot','hemo','pcv','wbcc','rbcc','htn','dm','cad','appet','pe','ane']
 
 
 # This dictionary lists the normalization desired for each column
@@ -351,14 +348,6 @@ class Analysis:
                 random_point = np.zeros(len(relevant))
                 for j, k in enumerate(relevant):
                     random_point[j] += np.random.normal(loc=self.data[k].mean(), scale=self.data[k].std())
-            
-            # This initializes centroids based on the k++ algorithm
-            # if mode == 'k++':
-            #     if i == 0:
-            #         random_point = np.zeros(len(relevant))
-            #         for j, k in enumerate(relevant):
-            #             random_point[j] += np.random.normal(loc=dataframe[k].mean(), scale=dataframe[k].std())
-            
 
             points_list.append(random_point)
 
@@ -543,8 +532,8 @@ def main():
 
 
     # 2) Normalize the data
-    # for i in normalization_dictionary:
-    #     dataframe[i] = p.scale(dataframe[i], mode=normalization_dictionary[i])
+    for i in normalization_dictionary:
+        dataframe[i] = p.scale(dataframe[i], mode=normalization_dictionary[i])
 
 
     # 3) Split the dataframe into training and test data
